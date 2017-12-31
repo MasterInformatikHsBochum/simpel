@@ -6,7 +6,7 @@
 	
 	Diese Java Klasse implementiert die Applikation eines
 	einfachen Parsers zum Erkennen arithmetischer
-	Ausdrücke.
+	Ausdrï¿½cke.
 	
 	Der eigentliche Parser wird in der Klasse ArithmeticParserClasse
 	defifiert.
@@ -17,8 +17,8 @@
 class ArithmetikParserApplication implements TokenList{
 	public static void main(String args[]){
 		
-		// Anlegen des Wurzelknotens für den Syntaxbaum. Dem Konstruktor
-		// wid als Token das Startsymbol der Grammatik übergeben
+		// Anlegen des Wurzelknotens fï¿½r den Syntaxbaum. Dem Konstruktor
+		// wid als Token das Startsymbol der Grammatik ï¿½bergeben
 		SyntaxTree parseTree = new SyntaxTree(EXPRESSION);
 		
 		// Anlegen des Parsers als Instanz der Klasse ArithmetikParserClass
@@ -26,7 +26,7 @@ class ArithmetikParserApplication implements TokenList{
 
 		// Einlesen der Datei 		
 		if (parser.readInput("testdatei_arithmetik.txt"))
-			// lexikalische Analyse durchführen
+			// lexikalische Analyse durchfï¿½hren
 			if (parser.lexicalAnalysis())
 				//Aufruf des Parsers und Test, ob gesamte Eingabe gelesen
 				if (parser.expression(parseTree)&& parser.inputEmpty()){
