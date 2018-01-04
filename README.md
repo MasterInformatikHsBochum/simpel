@@ -8,6 +8,14 @@
 - Codeerzeugung: Mario Groneick
 - Abstrakte Kellermaschine: Christian Walczak
 
+# Generierung aus Grammatik
+
+Automatische Generierung aus Grammatik mit Hilfe von [ANTLR v4](https://github.com/antlr/antlr4):
+
+```bash
+antlr4 simple.g4 -o generated
+```
+
 # Abstrakte Kellermaschine
 
 Befehlssatz:
