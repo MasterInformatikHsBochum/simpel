@@ -1,11 +1,11 @@
 grammar simpel;
 
 expression
-    : VARIABLE | function | application | CALC | decision
+    : VARIABLE | function | application | calculation | decision
     ;
 
 function
-    : 'function' VARIABLE ':' scope ';'
+    : FUNC VARIABLE COLON scope BREAK
     ;
 
 application
@@ -16,17 +16,38 @@ scope
     : expression
     ;
 decision
-    : '#' CONDITION ':' scope '|' scope ';'
+    : RAUTE condition COLON scope OPTION scope BREAK
     ;
-CONDITION
-    : CALC
+condition
+    : calculation
     ;
 VARIABLE
     : [a-z] [a-zA-Z0-9]*
     ;
-CALC
-    : (NUM | VARIABLE) OPERATOR (NUM | VARIABLE) | (VARIABLE | NUM) OPERATOR CALC
+calculation
+    : ((NUM | VARIABLE) OPERATOR (NUM | VARIABLE)) | ((VARIABLE | NUM) OPERATOR calculation)
     ;
+FUNC
+    :
+    'function'
+    ;
+OPTION
+    :
+    '|'
+    ;
+BREAK
+    :
+    ';'
+    ;
+
+COLON
+     :
+     ':'
+     ; 
+RAUTE
+     :
+     '#'
+     ;
 NUM
     : [0-9] [0-9]*
     ;
