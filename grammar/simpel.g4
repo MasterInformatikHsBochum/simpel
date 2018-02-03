@@ -1,7 +1,7 @@
 grammar simpel;
 
 expression
-    : VARIABLE | function | application | calculation | decision | inputsimpel | outputsimpel
+    : VARIABLE | function | application | calculation | decision | inputsimpel | outputsimpel | loop
     ;
 
 function
