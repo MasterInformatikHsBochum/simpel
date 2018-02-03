@@ -1,11 +1,11 @@
 grammar simpel;
 
 expression
-    : VARIABLE | function | application | calculation | decision
+    : VARIABLE | function | application | calculation | decision | inputsimpel | outputsimpel
     ;
 
 function
-    : FUNC VARIABLE COLON scope BREAK
+    : (FUNC VARIABLE COLON scope BREAK) | (FUNC VARIABLE COLON STRING BREAK)
     ;
 
 application
@@ -16,7 +16,7 @@ scope
     : expression
     ;
 decision
-    : RAUTE condition COLON scope OPTION scope BREAK
+    : IF condition COLON scope OPTION scope BREAK
     ;
 condition
     : calculation
@@ -44,12 +44,12 @@ COLON
      :
      ':'
      ; 
-RAUTE
+IF
      :
-     '#'
+     'if'
      ;
 NUM
-    : [0-9] [0-9]*
+    : ([0-9] [0-9]*) | ([0-9] [0-9]*'.'[0-9] [0-9]*)
     ;
 OPERATOR 
     : '+' | '-' | '*' | '/' | '||' | '&&' | '=='
@@ -57,3 +57,15 @@ OPERATOR
 WS
    : [ \t\r\n] -> skip
 ;
+STRING
+   :
+   '"'[a-zA-Z0-9]*'"'
+   ;
+inputsimpel
+   :
+   'in->'VARIABLE
+   ;
+outputsimpel
+   :
+   'out<-'VARIABLE
+   ;

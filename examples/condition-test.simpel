@@ -1,0 +1,5 @@
+function test: 0;
+function ausgabe1: "Ausgabe1";
+function ausgabe2: "Ausgabe2";
+in->test
+if test: out<-ausgabe1 | out<-ausgabe2;
