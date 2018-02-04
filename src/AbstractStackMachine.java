@@ -1,42 +1,111 @@
 import java.util.Stack;
 
 /**
- * Created by pin0y on 31.12.2017.
+ * This is the StackMachine for the simpel Language
  */
 public class AbstractStackMachine {
-    private Stack<Integer> stack;
+    private Stack<Object> stack;
 
     public AbstractStackMachine() {
-        stack = new Stack<Integer>();
+        stack = new Stack<Object>();
     }
 
     private void add() {
-        stack.push(stack.pop()+stack.pop());
+        Object stack1 = stack.pop();
+        Object stack2 = stack.pop();
+        if(stack1 instanceof Integer) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 + (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((int)stack1 + (double) stack2);
+            }
+        } else  if(stack1 instanceof Double) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 + (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((double) stack1 + (double) stack2);
+            }
+        } else {
+            throw new RuntimeException("RuntimeException: NaN");
+        }
     }
 
     private void sub() {
-        stack.push(stack.pop()-stack.pop());
+        Object stack1 = stack.pop();
+        Object stack2 = stack.pop();
+        if(stack1 instanceof Integer) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 - (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((int)stack1 - (double) stack2);
+            }
+        } else  if(stack1 instanceof Double) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 - (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((double) stack1 - (double) stack2);
+            }
+        } else {
+            throw new RuntimeException("RuntimeException: NaN");
+        }
     }
 
     private void mul() {
-        stack.push(stack.pop()*stack.pop());
+        Object stack1 = stack.pop();
+        Object stack2 = stack.pop();
+        if(stack1 instanceof Integer) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 * (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((int)stack1 * (double) stack2);
+            }
+        } else  if(stack1 instanceof Double) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 * (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((double) stack1 * (double) stack2);
+            }
+        } else {
+            throw new RuntimeException("RuntimeException: NaN");
+        }
     }
 
     private void div() {
-        stack.push(stack.pop()/stack.pop());
+        Object stack1 = stack.pop();
+        Object stack2 = stack.pop();
+        if(stack1 instanceof Integer) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 / (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((int)stack1 / (double) stack2);
+            }
+        } else  if(stack1 instanceof Double) {
+            if (stack2 instanceof Integer) {
+                stack.push((int) stack1 / (int) stack2);
+            } else if (stack2 instanceof Double) {
+                stack.push((double) stack1 / (double) stack2);
+            }
+        } else {
+            throw new RuntimeException("RuntimeException: NaN");
+        }
     }
 
-    private void load(int v)  {
+    private void load(Object v)  {
         stack.push(v);
     }
 
-    public int execute(String code) {
+    public void execute(String code) {
         String[] commands = code.split(";");
         System.out.println("- Abstract Stack Machine -");
         for (String command:commands) {
-            if (command.startsWith("LOAD")) {
+            if (command.startsWith("LOADN")) {
                 int v = Integer.parseInt(command.substring(command.indexOf(' ')+1));
                 load(v);
+            } else if (command.startsWith("LOADD")) {
+                double v = Double.parseDouble(command.substring(command.indexOf(' ') + 1));
+                load(v);
+            } else if (command.equals("LOADS")) {
+                load(command.substring(command.indexOf(' ') + 1));
             } else if (command.equals("ADD")) {
                 add();
             } else if (command.equals("SUB")) {
@@ -48,7 +117,6 @@ public class AbstractStackMachine {
             }
             System.out.println(command + " : " +stack.toString());
         }
-        return stack.pop();
     }
 
 }
