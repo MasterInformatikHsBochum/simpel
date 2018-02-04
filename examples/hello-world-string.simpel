@@ -1,2 +1,2 @@
-function test:"HalloWelt";
-out<-test
+func test:"HalloWelt";
+out<-$test

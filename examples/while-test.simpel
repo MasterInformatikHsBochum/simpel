@@ -1,8 +1,8 @@
-function test:0;
-in->test
-function fak:test;
-while( test > 1):
-	function test:test-1;
-	function fak: fak *test;
+func test:0;
+in->$test
+func fak: $test;
+while( $test > 1):
+	func test:$test-1;
+	func fak: $fak * $test;
 ;
-out<-fak
+out<-$fak

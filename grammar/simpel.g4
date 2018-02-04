@@ -1,11 +1,12 @@
 grammar simpel;
 
 expression
-    : VARIABLE | function | application | calculation | decision | inputsimpel | outputsimpel | loop
+    : (var | function | application | calculation | decision | inputsimpel | outputsimpel | loop) (var | function | application | calculation | decision | inputsimpel | outputsimpel | loop)*
+
     ;
 
 function
-    : (FUNC VARIABLE COLON scope BREAK) | (FUNC VARIABLE COLON STRING BREAK)
+    : (FUNC VARIABLE COLON scope BREAK) | (FUNC VARIABLE COLON string BREAK)
     ;
 
 application
@@ -19,17 +20,21 @@ decision
     : IF condition COLON scope OPTION scope BREAK
     ;
 condition
-    : calculation
+    : calculation 
+    ;
+var
+    :
+    '$'VARIABLE
     ;
 VARIABLE
     : [a-z] [a-zA-Z0-9]*
     ;
 calculation
-    : ((NUM | VARIABLE) OPERATOR (NUM | VARIABLE)) | ((VARIABLE | NUM) OPERATOR calculation)
+    : ((NUM | var) OPERATOR (NUM | var)) | ((var | NUM) OPERATOR calculation) | NUM | var
     ;
 FUNC
     :
-    'function'
+    'func '
     ;
 OPTION
     :
@@ -46,10 +51,14 @@ COLON
      ; 
 IF
      :
-     'if'
+     'if '
      ;
 NUM
     : ([0-9] [0-9]*) | ([0-9] [0-9]*'.'[0-9] [0-9]*)
+    ;
+EQUAL
+    :
+    '='
     ;
 OPERATOR 
     : '+' | '-' | '*' | '/' | '||' | '&&' | '==' | '<=' | '=>' | '<' | '>'
@@ -57,17 +66,21 @@ OPERATOR
 WS
    : [ \t\r\n] -> skip
 ;
+string
+   :
+   '"'STRING'"'
+   ;
 STRING
    :
-   '"'[a-zA-Z0-9]*'"'
+   [a-zA-Z0-9]*
    ;
 inputsimpel
    :
-   'in->'VARIABLE
+   'in->'var
    ;
 outputsimpel
    :
-   'out<-'VARIABLE
+   'out<-'var
    ;
 loop
    :
