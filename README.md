@@ -22,5 +22,7 @@ Befehlssatz:
 - ADD		Addition der obersten beiden Stack‐Elemente. Diese werden entfernt, und das Ergebnis wird auf den Stack gelegt.
 - SUB		Subtraktion.
 - MUL		Multiplikation.
-- LOAD v  Lege Wert v auf den Stack.
+- LOADN v  Lege Ganzzahlwert v auf den Stack.
+- LOADD v  Lege Dezimalwert v auf den Stack.
+- LOADS v  Lege String v auf den Stack.
 - ;  		Sequentielle Komposition
