@@ -13,7 +13,7 @@
 Automatische Generierung aus Grammatik mit Hilfe von [ANTLR v4](https://github.com/antlr/antlr4):
 
 ```bash
-antlr4 simpel.g4 -o generated
+cd grammar && make
 ```
 
 # Abstrakte Kellermaschine
