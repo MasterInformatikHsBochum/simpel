@@ -6,7 +6,7 @@ expression
     ;
 
 function
-    : (FUNC VARIABLE COLON scope BREAK) | (FUNC VARIABLE COLON string BREAK)
+    : ('func 'VARIABLE COLON scope BREAK) | ('func 'VARIABLE COLON string BREAK)
     ;
 
 application
@@ -30,11 +30,7 @@ VARIABLE
     : [a-z] [a-zA-Z0-9]*
     ;
 calculation
-    : ((NUM | var) OPERATOR (NUM | var)) | ((var | NUM) OPERATOR calculation) | NUM | var
-    ;
-FUNC
-    :
-    'func '
+    : ((num | var) op (num | var)) | ((var | num) op calculation) | num | var
     ;
 OPTION
     :
@@ -53,12 +49,16 @@ IF
      :
      'if '
      ;
+num
+   :
+   NUM
+   ;
 NUM
     : ([0-9] [0-9]*) | ([0-9] [0-9]*'.'[0-9] [0-9]*)
     ;
-EQUAL
+op
     :
-    '='
+    OPERATOR
     ;
 OPERATOR 
     : '+' | '-' | '*' | '/' | '||' | '&&' | '==' | '<=' | '=>' | '<' | '>'
