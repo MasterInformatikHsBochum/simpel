@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from antlr4 import *
 from simpelLexer import simpelLexer
 from simpelListener import simpelListener
