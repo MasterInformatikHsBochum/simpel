@@ -86,3 +86,7 @@ loop
    :
    'while(' condition '):' scope BREAK
    ;  
+COMMENT
+   :
+   '%'[ a-zA-Z0-9]*'%' -> skip
+   ;

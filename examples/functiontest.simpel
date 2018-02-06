@@ -1,5 +1,8 @@
+% Diverse berechnungen in Variablen speichern %
 func test: $blah*10;
 func test2: $test*10;
-func test3: $test2*10+9;
-func test4: $test3*10*$test;
+func test3: $test2*10+9-8;
+func test4: $test3*10*$test/9;
 func ans: $test4;
+% Endergebniss ausgeben%
+out<-$ans

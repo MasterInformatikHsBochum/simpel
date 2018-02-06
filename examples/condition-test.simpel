@@ -1,5 +1,9 @@
+% Variable deklarieren %
 func test: 0;
+% Ein und Ausgabe als Variablen deklarieren %
 func ausgabe1: "Ausgabe1";
 func ausgabe2: "Ausgabe2";
+% Wert der Variable test einlesen %
 in->$test
+% if Anweisung bei einem Wert ungleich 0 ist die auswertung true %
 if $test: out<-$ausgabe1 | out<-$ausgabe2;

@@ -1,6 +1,9 @@
+% Variable zum einlesen anlegen %
 func test:0;
+% Wert einlesen %
 in->$test
 func fak: $test;
+% Vergleich liefert 1 oder 0 zurueck die while schleife verhaelt sich bei der Bedingung wie die if Anweisung %
 while( $test > 1):
 	func test:$test-1;
 	func fak: $fak * $test;
