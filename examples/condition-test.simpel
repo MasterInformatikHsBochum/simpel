@@ -6,4 +6,4 @@ func ausgabe2: "Ausgabe2";
 % Wert der Variable test einlesen %
 in->$test
 % if Anweisung bei einem Wert ungleich 0 ist die auswertung true %
-if $test: out<-$ausgabe1 | out<-$ausgabe2;
+if( $test ): out<-$ausgabe1 | out<-$ausgabe2;
