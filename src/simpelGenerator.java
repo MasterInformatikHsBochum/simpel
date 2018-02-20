@@ -13,8 +13,15 @@ public class simpelGenerator {
 		List<Integer> valueList = new ArrayList<Integer>();
         String operator = "";
         
+        System.out.println("Tree ChildCount : " + tree.getChildCount());
+        System.out.println("Tree : " + tree.getText());
+        
         for (int i = 0; i < tree.getChildCount(); i++) {
 			TerminalNode typeNode = (TerminalNode) tree.getChild(i);
+			
+			System.out.println("Typenode Symbol : " + typeNode.getSymbol().getType());
+			System.out.println(tree.getChild(i));
+			System.out.println("Typenode Child Text : " + tree.getChild(i).getText() + "\n");
 			
 			switch (typeNode.getSymbol().getType()) {
 			case simpelLexer.NUM:
@@ -36,6 +43,12 @@ public class simpelGenerator {
 					break;
 				}
 				break;
+			case simpelLexer.VARIABLE:
+				switch (tree.getChild(i).getText()) {
+				case "func":
+					System.out.println("function gefunden" + "\n");
+					break;
+				}
 			}
 		}
         
@@ -46,5 +59,9 @@ public class simpelGenerator {
         code.append(operator);
 		
 		return code.toString();
+	}
+	
+	private String goTo(){
+		return null;
 	}
 }
