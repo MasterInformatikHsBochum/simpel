@@ -17,7 +17,7 @@ scope
     : expression
     ;
 decision
-    : IF condition COLON scope OPTION scope BREAK
+    : IF'(' condition ')' COLON scope OPTION scope BREAK
     ;
 condition
     : calculation 
@@ -47,7 +47,7 @@ COLON
      ; 
 IF
      :
-     'if '
+     'if'
      ;
 num
    :
